@@ -19,13 +19,13 @@ body {
     align-items: center;
     height: auto;
     overflow-x: hidden;
+    margin-top: 40px;
 }
 
 .card {
     position: relative;
-    width: 100%;
-    max-width: 400px;
-    height: 91vh;
+    width: 400px;
+    height: 70vh;
     padding: 30px;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -59,7 +59,7 @@ p {
 h1 {
     color: #ff5e8e;
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 200;
 }
 
@@ -67,7 +67,8 @@ h1 {
     width: 100%;
     height: 380px;
     background-image: url('https://b2866409.smushcdn.com/2866409/wp-content/uploads/2022/11/bouquet-of-50-premium-pink-roses.png?lossy=1&strip=1&webp=1');
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 20px;
 }
@@ -515,8 +516,7 @@ p {
         margin-top: 20px;
     }
     .flowers {
-        height: 140px;
-        margin-bottom: 10px;
+        height: 200px; /* Adjust height for mobile */
     }
 }
     </style>
@@ -530,11 +530,16 @@ p {
             <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
             <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
         </div>
+        <br>
         <h1>Happy Birthday Gale!</h1>
         <div class="flowers"></div>
+        <br>
         <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-right: 30px; padding-right: 10px;">Wishing you a day filled with love,</p>
         <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-right: 30px; padding-right: 5px; margin-bottom: 10px;"> joy, and beautiful moments.</p>
+        <br>
         <button class="btn" id="celebrateBtn" disabled>Celebrate Now</button>
+        <br>
+        <br>
         <p class="scroll-hint" id="scrollHint">Scroll to reveal</p> <!-- Scroll hint added here -->
     </div>
 
