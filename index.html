@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May 18th</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-x: hidden;
+}
+
+.card {
+    position: relative;
+    width: 400px;
+    height: 91vh;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    z-index: 10;
+    margin-top: 50px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1,
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+    text-indent: 50px;
+}
+
+h1 {
+    color: #ff5e8e;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 200;
+}
+
+.flowers {
+    width: 100%;
+    height: 380px;
+    background-image: url('https://b2866409.smushcdn.com/2866409/wp-content/uploads/2022/11/bouquet-of-50-premium-pink-roses.png?lossy=1&strip=1&webp=1');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.btn, .scroll-btn {
+    background-color: #ff5e8e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn:hover:enabled {
+    background-color: #ff3366;
+}
+
+.scroll-hint {
+    color: #ff5e8e;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-right: 55px;
+    animation: floatHint 2s infinite ease-in-out;
+    display: block; /* Show by default when button is disabled */
+}
+
+@keyframes floatHint {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Hidden initially, displayed when the button is clicked */
+.celebrate-animation {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.celebrate-flower {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: drift 6s infinite ease-in-out;
+}
+
+@keyframes drift {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Heart and message styles */
+.heart-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 40px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    transition: transform 2s, background-color 2s;
+    z-index: 10; /* Set a higher z-index than celebrate-animation */
+    cursor: pointer;
+}
+
+.heart > img {
+    width: 50px;
+    transition: filter 2s;
+}
+
+.message {
+    padding: 20px;
+    background-color: #eee;
+    min-width: 400px;
+    height: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    transition: height 0.5s ease;
+}
+
+.message p {
+    padding-left: 0 !important;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.message h4 {
+    margin-top: 10%;
+    margin-left: 69%;
+}
+
+.message.open {
+    height: 75%;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+/* Scroll Button */
+.scroll-btn {
+    position: relative;
+    z-index: 5;
+    margin-top: 10px;
+}
+
+.floating-flowers {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.floating-flowers img {
+    width: 60px;
+    height: 60px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    transition: transform 2s, background-color 2s;
+    z-index: 1;
+    cursor: pointer; /* Added cursor pointer */
+}
+
+.heart > img {
+    width: 50px;
+    height: auto;
+    transition: filter 2s;
+}
+
+.message {
+    padding: 0;
+    background-color: #eee;
+    min-width: 400px;
+    height: 0%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    transition: height 0.5s ease, padding 0.5s ease;
+}
+
+.message.open {
+    height: 75%;
+    padding: 20px;
+}
+
+.heart > img:hover {
+    animation-name: beat;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes beat {
+    0% {
+        width: 50px;
+    }
+    25% {
+        width: 58px;
+    }
+    30% {
+        width: 50px;
+    }
+    50% {
+        width: 45px;
+    }
+    60% {
+        width: 50px;
+    }
+    75% {
+        width: 58px;
+    }
+    100% {
+        width: 50px;
+    }
+}
+
+/* Responsive for iPhone sizes */
+@media screen and (max-width: 375px) {
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+    .flowers {
+        height: 150px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .heart > img {
+        width: 40px;
+    }
+    .btn {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .card {
+        width: 95%;
+        padding: 20px;
+    }
+    .flowers {
+        height: 180px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1.1em;
+    }
+    .heart > img {
+        width: 45px;
+    }
+    .btn {
+        font-size: 1.05em;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        width: 100%;
+        padding: 10px;
+    }
+    .flowers {
+        height: 130px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+    .heart > img {
+        width: 35px;
+    }
+    .btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+    /* Additional responsive styles for iPhone 11 */
+@media screen and (max-width: 828px) {
+.card {
+    width: 90%;
+    padding: 20px;
+}
+.flowers {
+    height: 250px; /* Adjusting the height for better visual appeal */
+}
+h1 {
+    font-size: 2.5em;
+}
+p {
+    font-size: 1.1em;
+}
+.heart > img {
+    width: 45px; /* Adjusting heart size */
+}
+.btn {
+    font-size: 1.1em;
+}   
+}
+
+/* Responsive styles for iPhone 7 Plus */
+@media screen and (max-width: 1080px) {
+.card {
+    width: 85%;
+    padding: 25px;
+}
+.flowers {
+    height: 300px; /* Adjusting height for a better look */
+}
+h1 {
+    font-size: 2.3em;
+}
+p {
+    font-size: 1.05em;
+}
+.heart > img {
+    width: 50px; /* Slightly larger heart for better visibility */
+}
+.btn {
+    font-size: 1.1em;
+}
+}
+
+/* Responsive styles for iPhone 14 Pro Max */
+@media screen and (max-width: 428px) {
+    .card {
+        width: 92%;
+        padding: 25px;
+        height: auto;
+        min-height: 85vh;
+    }
+    .flowers {
+        height: 280px;
+    }
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+    p {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+    .heart > img {
+        width: 48px;
+    }
+    .btn {
+        font-size: 1.1em;
+        padding: 12px 24px;
+    }
+    .message {
+        min-width: 350px;
+        max-width: 90%;
+    }
+    .message.open {
+        height: 80%;
+    }
+    .floating-flowers img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Responsive styles for iPhone 12 Pro Max */
+@media screen and (max-width: 428px) and (min-height: 926px) {
+    .card {
+        width: 90%;
+        padding: 22px;
+        height: auto;
+        min-height: 88vh;
+        margin-top: 30px;
+    }
+    .flowers {
+        height: 260px;
+        margin-bottom: 15px;
+    }
+    h1 {
+        font-size: 2.3em;
+        margin-bottom: 18px;
+        letter-spacing: 0.5px;
+    }
+    p {
+        font-size: 1.15em;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    .heart > img {
+        width: 45px;
+    }
+    .btn {
+        font-size: 1.15em;
+        padding: 12px 28px;
+        margin-top: 5px;
+    }
+    .message {
+        min-width: 340px;
+        max-width: 92%;
+    }
+    .message.open {
+        height: 82%;
+        padding: 25px;
+    }
+    .floating-flowers {
+        top: -25px;
+    }
+    .floating-flowers img {
+        width: 45px;
+        height: 45px;
+    }
+    .scroll-hint {
+        margin-top: 8px;
+        font-size: 0.95em;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="floating-flowers">
+            <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
+            <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
+            <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
+            <img src="https://png.pngtree.com/png-clipart/20231206/original/pngtree-realistic-beautiful-pink-flowers-png-image_13781753.png" alt="Flower">
+        </div>
+        <h1>Happy Birthday Gale!</h1>
+        <div class="flowers"></div>
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-right: 30px; padding-right: 10px;">Wishing you a day filled with love,</p>
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-right: 30px; padding-right: 5px; margin-bottom: 10px;"> joy, and beautiful moments.</p>
+        <button class="btn" id="celebrateBtn" disabled>Celebrate Now</button>
+        <p class="scroll-hint" id="scrollHint">Scroll to reveal</p> <!-- Scroll hint added here -->
+    </div>
+
+    <!-- Heart and message section -->
+    <div class="heart-section">
+        <div class="heart">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg" alt="Heart">
+        </div>
+        <div class="message">
+            <h1>Hi, Tal!</h1>
+            <br>
+            <p>Happy Birthday!</p>
+            <br>
+            <p>The prettiest and also the cutesyy sa Hoelics HAHAHAHA, you're a wonderful person to me tal, the kindness, understanding,
+                cheerfulness, not just a friend but a bestie to me, and I'm so grateful that we met. I hope you have a fantastic day filled with all the things you love most.
+                 You deserve all the happiness in the world.</p>
+            <br>
+            <p>You deserve the same amount of efforts you've been putting in, and all of the energy that you've been putting in
+                every single day. I hope you know that you are loved and appreciated by so many people, including me.
+                I hope you have a great day and that you get to spend it with the people you love most.
+                I hope you get to eat all of your favorite foods and that you get to do all of the things that make you happy.</p>
+            <br>
+            <p>Truly yours,</p>
+            <br>
+            <h5 style="margin-left: 28px;">Lliam Khenzo Monleon</h5>            
+            <br>
+            <br>
+            <p style="text-align: center; font-size: smaller; color: gray;">Scroll all the way to the top</p>
+        </div>
+    </div>
+
+    <!-- Hidden celebration animation initially -->
+    <div class="celebrate-animation" id="celebrateAnimation"></div>
+
+    <script>
+        // Function to create flower elements on the screen with random positions
+        function createFlowers() {
+            const celebrationDiv = document.getElementById('celebrateAnimation');
+
+            for (let i = 0; i < 50; i++) {
+                const flower = document.createElement('div');
+                flower.classList.add('celebrate-flower');
+                flower.style.left = `${Math.random() * 100}vw`;
+                flower.style.top = `${Math.random() * 100}vh`;
+                flower.style.animationDelay = `${Math.random() * 5}s`;
+                flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+                celebrationDiv.appendChild(flower);
+            }
+        }
+
+        // Function to show the celebration animation
+        function startCelebration() {
+            const celebrationDiv = document.getElementById('celebrateAnimation');
+            celebrationDiv.style.display = 'block';
+            createFlowers();
+        }
+
+        // Click event for heart to show the message and enable the button
+        document.querySelector('.heart').addEventListener('click', function() {
+            const message = document.querySelector('.message');
+            const heart = document.querySelector('.heart');
+            const isOpen = message.classList.contains('open');
+
+            if (isOpen) {
+                // Close the message
+                message.classList.remove('open');
+                heart.classList.remove('openHer');
+                document.querySelector('.heart-section').style.backgroundColor = "#fce4ec";
+                document.getElementById('scrollHint').style.display = 'block'; // Show the scroll hint
+            } else {
+                // Open the message and enable the button
+                message.classList.add('open');
+                heart.classList.add('openHer');
+                document.querySelector('.heart-section').style.backgroundColor = "#f48fb1";
+                document.getElementById('celebrateBtn').disabled = false; // Enable the button once the message is opened
+                document.getElementById('scrollHint').style.display = 'none'; // Hide the scroll hint
+            }
+        });
+
+        // Celebration button click event
+        document.getElementById('celebrateBtn').addEventListener('click', startCelebration);
+    </script>
+</body>
+</html>
